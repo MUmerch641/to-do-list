@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>To-Do List</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #ffffff; /* Default white background */
+    color: #000000; /* Default black text color */
+  }
+  body.darkTheme {
+    background-color: #000000; /* Dark background */
+    color: #ffffff; /* Light text color */
+  }
+  #taskInput {
+    width: 300px;
+    margin-bottom: 10px;
+  }
+  #taskList {
+    list-style-type: none;
+    padding: 0;
+  }
+  .taskItem {
+    margin-bottom: 5px;
+  }
+  .deleteButton {
+    margin-left: 10px;
+    cursor: pointer;
+  }
+  .themeButton {
+    margin-top: 10px;
+    cursor: pointer;
+  }
+</style>
+</head>
+<body>
+<h1>To-Do List</h1>
+<input type="text" id="taskInput" placeholder="Enter task">
+<button onclick="addTask()">Add Task</button>
+<ul id="taskList"></ul>
+<button class="themeButton" onclick="toggleTheme()">Switch Theme</button>
+
+<script>
+  // Function to add a new task
+  function addTask() {
+    var taskInput = document.getElementById("taskInput");
+    var taskText = taskInput.value.trim();
+    
+    if (taskText !== "") {
+      var taskList = document.getElementById("taskList");
+      var taskItem = document.createElement("li");
+      taskItem.className = "taskItem";
+      taskItem.innerHTML = taskText + '<span class="deleteButton" onclick="deleteTask(this)">❌</span>';
+      taskList.appendChild(taskItem);
+      taskInput.value = "";
+    } else {
+      alert("Please enter a task!");
+    }
+  }
+
+  // Function to delete a task
+  function deleteTask(element) {
+    var taskList = document.getElementById("taskList");
+    var taskItem = element.parentNode;
+    taskList.removeChild(taskItem);
+  }
+
+  // Function to toggle between black and white themes
+  function toggleTheme() {
+    var body = document.body;
+    body.classList.toggle("darkTheme");
+  }
+</script>
+</body>
+</html>

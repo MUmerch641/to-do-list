@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <script>
+        let body = document.querySelector("body");
+        let button = document.createElement("button");
+        button.innerText="Make it Black!";
+        body.prepend(button);
+        button.addEventListener("click", function(){
+            if(body.style.backgroundColor == "black")
+            {
+                body.style.backgroundColor= "white";
+                button.innerText="Make it Black!";
+            }
+               else {
+                {
+                body.style.backgroundColor= "black";
+                button.innerText="Make it White!";
+            }
+               } 
+        })
+
+    </script>
+</body>
+</html>

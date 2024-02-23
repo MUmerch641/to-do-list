@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Simple To-Do List</title>
+  </head>
+<style>
+    .remove-button{
+        margin: 5px;
+    }
+    .li-white {
+        color: white;
+    }
+    
+    .li-black {
+        color: black;
+    }
+
+
+    body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-family: Arial, sans-serif;
+    background-color: #ffffff; /* Default white background */
+    color: #000000; /* Default black text color */
+  }
+
+  body.darkTheme {
+    background-color: #000000; /* Dark background */
+    color: #ffffff; /* Light text color */
+  }
+  .themeButton {
+    margin-top: 10px;
+    cursor: pointer;
+  }
+
+</style>
+  <body>
+    <h1>My To-Do List</h1>
+    <div>
+        <input type="text" id="todoInput" placeholder="Enter a new task" />
+        <button id="addButton">Add</button>
+    </div>
+    <ul id="todoList"></ul>
+
+    <script>
+
+        // Todo list
+      let input = document.querySelector("#todoInput");
+      let btn = document.querySelector("#addButton");
+      let ul = document.querySelector("#todoList");
+    //   console.log(inputdata);
+      btn.addEventListener("click", function () {
+        if(input.value === '') {
+            input.style.border = "2px solid red";
+            alert("Please fill it");
+        }
+        else
+        {
+          let inputdata = input.value.trim();
+        let li = document.createElement("li");
+        li.textContent = inputdata;
+        ul.after(li);
+        let removeBtn = document.createElement("button");
+        removeBtn.innerText = "Remove";
+        removeBtn.classList.add("remove-button");
+        li.appendChild(removeBtn);
+        // removeBtn.type="reset";
+        removeBtn.addEventListener("click", function(){
+            li.remove();
+        })
+        }
+        input.value='';
+    });
+
+    // black theme
+    let body = document.querySelector("body");
+    let button = document.createElement("button");
+    button.innerText = "Make it Black!";
+    body.prepend(button);
+    button.addEventListener("click",function(){
+    var body = document.body;
+    body.classList.toggle("darkTheme");
+  })
+    </script>
+  </body>
+</html>

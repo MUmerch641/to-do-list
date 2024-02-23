@@ -1,0 +1,12 @@
+// let body = document.querySelector("body");
+// let btn = document.createElement("button");
+// btn.innerHTML ="Click me!";
+// body.prepend(btn);
+// btn.style.backgroundColor="red";
+// btn.style.color="white";
+// btn.style.padding="1rem";
+// btn.style.border="black";
+// btn.style.borderRadius="15px";
+// btn.style.cursor="Pointer";
+let para = document.querySelector("p");
+para.classList.add("goku");
